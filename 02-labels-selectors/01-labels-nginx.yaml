@@ -15,3 +15,43 @@ spec:
   dnsPolicy: ClusterFirst
   restartPolicy: Always
 status: {}
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    app: v1
+    env: test2
+    type: f1
+  name: nginx2
+spec:
+  containers:
+  - image: nginx
+    name: nginx2
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    app: v2
+    env: test1
+    type: f1
+  name: nginx3
+spec:
+  containers:
+  - image: nginx
+    name: nginx3
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
