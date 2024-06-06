@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  creationTimestamp: null
+  name: mynamespace-quota
+spec:
+  hard:
+    requests.cpu: "3"
+    requests.memory: 4G
+    limits.cpu: "6"
+    limits.memory: 8G
+status: {}
