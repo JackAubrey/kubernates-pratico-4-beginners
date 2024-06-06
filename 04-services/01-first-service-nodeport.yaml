@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2024-05-20T14:23:22Z"
+  labels:
+    app: simpleapp
+  name: simpleapp
+  resourceVersion: "97118"
+  uid: f7756678-02c4-45b1-ab66-8f6af0f5f08b
+  namespace: mynamespace
+spec:
+  clusterIP: 10.96.136.38
+  clusterIPs:
+  - 10.96.136.38
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: simpleapp
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

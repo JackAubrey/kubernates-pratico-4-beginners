@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  name: nginx
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    run: nginx
+status:
+  loadBalancer: {}
+---
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: nginx
+  name: nginx
+spec:
+  containers:
+  - image: nginx
+    name: nginx
+    ports:
+    - containerPort: 80
+    resources: {}
+    env:
+      - name: option # name of the env var
+        valueFrom: # the env var "option" take its value from
+          configMapKeyRef: # the config map key reference
+            name: cm-options #name of config map
+            key: my_key # the key is "my_key" set into the config map
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

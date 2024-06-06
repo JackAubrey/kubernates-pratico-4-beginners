@@ -3,23 +3,23 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: ngnix
-  name: ngnix
+    app: simpleapp02
+  name: simpleapp02
   namespace: mynamespace
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: ngnix
+      app: simpleapp02
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: ngnix
+        app: simpleapp02
     spec:
       containers:
-      - image: nginx:1.18.0
-        name: nginx
+      - image: dgkanatsios/simpleapp
+        name: simpleapp
         resources: {}
 status: {}
