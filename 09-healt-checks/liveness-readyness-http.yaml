@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    test: liveness-readyness
+  name: liveness-readyness-exec
+spec:
+  containers:
+    - image: busybox
+      name: liveness-readyness
+      imagePullPolicy: IfNotPresent
+      resources: {}
+      args:
+        - /bin/sh
+        - -c
+        - touch /tmp/healthy; sleep 600
+      readinessProbe:
+        exec:
+          command:
+            - cat
+            - /tmp/healthy
+        initialDelaySeconds: 20
+        periodSeconds: 1

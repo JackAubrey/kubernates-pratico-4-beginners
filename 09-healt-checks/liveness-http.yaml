@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    test: liveness
+  name: liveness-http
+spec:
+  containers:
+  # this is a special image did to test the liveness probe. After 10second the POD will crack
+  - image: registry.k8s.io/e2e-test-images/agnhost:2.40
+    name: liveness
+    args:
+      - liveness
+    resources: {}
+    livenessProbe:
+      httpGet:
+        path: /healthz
+        port: 8080
+        httpHeaders:
+          - name: Custom-Header
+            value: Awesome
+      initialDelaySeconds: 3
+      periodSeconds: 3
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
