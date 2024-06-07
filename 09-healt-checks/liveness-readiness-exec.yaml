@@ -3,12 +3,12 @@ kind: Pod
 metadata:
   creationTimestamp: null
   labels:
-    test: liveness-readyness
-  name: liveness-readyness-exec
+    test: liveness-readiness
+  name: liveness-readiness-exec
 spec:
   containers:
     - image: busybox
-      name: liveness-readyness
+      name: liveness-readiness
       imagePullPolicy: IfNotPresent
       resources: {}
       args:
