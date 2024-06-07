@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: busybox
+  name: busybox
+spec:
+  containers:
+  - args:
+      - /bin/sh
+      - -c
+      - sleep 3600
+    image: busybox
+    name: busybox
+    imagePullPolicy: IfNotPresent
+    resources: {}
+    # here I mount of the volume
+    # look the name it is equals to the name used in pvc volumes
+    volumeMounts:
+      - name: my-pod-vol-name
+        mountPath: "/etc/foo"
+  restartPolicy: Never
+  # here I declare the PVC
+  volumes:
+    - name: my-pod-vol-name
+      persistentVolumeClaim:
+        claimName: my-pvc-dynamic
