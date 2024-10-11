@@ -1,1 +1,1 @@
-## Kubernates Pratico per Principianti
+## Kubernetes Pratico per Principianti
